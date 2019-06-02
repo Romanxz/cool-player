@@ -3,22 +3,25 @@ import Grid from '@material-ui/core/Grid'
 import Root from './components/root'
 import Player from './components/player'
 import Chat from './components/chat'
+import Progressbar from './components/progressbar'
 
 function App() {
   return (
     <Root>
       <Grid
+        style={{ height: '100%', width: '100%' }}
         container
-        style={{ height: '90%', width: '95%' }}
         direction="row"
         justify="center"
         alignItems="center"
         spacing={1}
       >
-        <Grid item style={{ height: '100%', width: '80%' }} xl={9}>
-          <Player />
+        <Grid item style={{ height: '100%' }} lg={10} md={9} sm={12} xs={12}>
+          <Player>
+            <Progressbar />
+          </Player>
         </Grid>
-        <Grid item style={{ height: '100%', width: '20%' }} xl={3}>
+        <Grid item style={{ height: '100%' }} lg={2} md={3} sm={12} xs={12}>
           <Chat />
         </Grid>
       </Grid>

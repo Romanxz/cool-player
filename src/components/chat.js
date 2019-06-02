@@ -1,11 +1,12 @@
 import React from 'react'
+import Paper from '@material-ui/core/Paper'
 
 class Chat extends React.Component {
   state = {}
   render() {
     return (
       <>
-        <div
+        <Paper
           style={{
             background: 'green',
             position: 'relative',

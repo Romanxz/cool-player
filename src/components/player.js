@@ -11,7 +11,9 @@ class Player extends React.Component {
           width="100%"
           url="https://www.youtube.com/watch?v=dE3F6sybNJk"
           playing
-        />
+        >
+          {this.props.children}
+        </ReactPlayer>
       </>
     )
   }
