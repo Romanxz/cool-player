@@ -3,8 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Root from './components/root'
 import ReactPlayer from 'react-player'
 import Chat from './components/chat'
-import Topbar from './components/topbar'
-import Controlpanel from './components/controlpanel'
+import Controlpanel from './components/playercontrols/controlpanel'
 
 class Coolplayer extends React.Component {
   state = {
@@ -85,45 +84,7 @@ class Coolplayer extends React.Component {
             <Chat />
           </Grid>
         </Grid>
-        <Grid
-          style={{
-            height: '100%',
-            width: '100%',
-            position: 'absolute',
-            top: '4px',
-            left: '4px',
-          }}
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          spacing={1}
-        >
-          <Grid
-            item
-            container
-            style={{ height: '100%' }}
-            direction="column"
-            justify="space-between"
-            alignItems="stretch"
-            lg={10}
-            md={9}
-            sm={12}
-            xs={12}
-          >
-            <Grid item style={{ height: '10%', width: '100%' }}>
-              <Topbar />
-            </Grid>
-            <Grid item style={{ height: '10%', width: '100%' }}>
-              <Controlpanel
-                played={played}
-                loaded={loaded}
-                duration={duration}
-              />
-            </Grid>
-          </Grid>
-          <Grid item style={{ height: '100%' }} lg={2} md={3} sm={12} xs={12} />
-        </Grid>
+        <Controlpanel played={played} loaded={loaded} duration={duration} />
       </Root>
     )
   }
