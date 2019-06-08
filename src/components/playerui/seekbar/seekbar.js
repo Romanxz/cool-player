@@ -5,8 +5,8 @@ import Progressbar from './progressbar'
 const thumbstyles = {
   appearance: 'none',
   cursor: 'pointer',
-  height: 14,
-  width: 14,
+  height: 12,
+  width: 12,
   borderRadius: '50%',
   background: 'grey',
   border: '1px solid black',
@@ -16,6 +16,7 @@ const useStyles = makeStyles({
   seeker: {
     position: 'absolute',
     background: 'transparent',
+    cursor: 'pointer',
     height: 2,
     width: '100%',
     appearance: 'none',
@@ -35,24 +36,24 @@ const useStyles = makeStyles({
 
 const Seekbar = ({ played, loaded, duration, ...props }) => {
   const classes = useStyles()
-  const [isFocused, setFocus] = useState(false)
+  const [isMouseOver, setMouseOver] = useState(false)
   return (
     <>
       <input
-        onMouseDown={props.onMouseDown}
-        onChange={props.onChange}
-        onMouseUp={props.onMouseUp}
+        onMouseDown={props.onSeekMouseDown}
+        onChange={props.onSeekChange}
+        onMouseUp={props.onSeekMouseUp}
         className={classes.seeker}
-        style={{ height: isFocused ? 4 : 2, top: isFocused ? -6 : -4 }}
+        style={{ height: isMouseOver ? 4 : 2, top: isMouseOver ? -6 : -4 }}
         type="range"
         step="any"
         min={0}
         max={duration}
         value={played}
-        onFocus={() => setFocus({ isFocused: true })}
-        onBlur={() => setFocus({ isFocused: false })}
+        onMouseMove={() => setMouseOver({ isMouseOver: true })}
+        onMouseLeave={() => setMouseOver({ isMouseOver: false })}
       />
-      <Progressbar isFocused={isFocused} played={played} loaded={loaded} duration={duration} />
+      <Progressbar isMouseOver={isMouseOver} played={played} loaded={loaded} duration={duration} />
     </>
   )
 }

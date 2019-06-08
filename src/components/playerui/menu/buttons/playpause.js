@@ -7,20 +7,21 @@ const useStyles = makeStyles(theme => ({
     height: 30,
     width: 30,
     marginLeft: 15,
+    cursor: 'pointer',
   },
 }))
 
-const Buttons = props => {
+const Playpause = ({ isPlaying, onPlayPause }) => {
   const classes = useStyles()
   return (
     <>
-      {props.isPlaying ? (
-        <Pause onClick={props.onPlayPause} color="primary" className={classes.playpause} />
+      {isPlaying ? (
+        <Pause onClick={onPlayPause} color="primary" className={classes.playpause} />
       ) : (
-        <PlayArrow onClick={props.onPlayPause} color="primary" className={classes.playpause} />
+        <PlayArrow onClick={onPlayPause} color="primary" className={classes.playpause} />
       )}
     </>
   )
 }
 
-export default Buttons
+export default Playpause

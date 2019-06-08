@@ -1,79 +1,70 @@
 import React from 'react'
 import { Grid } from '@material-ui/core/'
 import Seekbar from './seekbar/seekbar'
-import Buttons from './buttons'
+import Menu from './menu/menu'
 
-const Controlpanel = props => {
+const Controlpanel = ({
+  onSeekMouseDown,
+  onSeekChange,
+  onSeekMouseUp,
+  onPlayPause,
+  toggleMuted,
+  isPlaying,
+  isMuted,
+  played,
+  loaded,
+  duration,
+}) => {
   return (
-    <Grid //root grid, возникло смещение на 4px
-      style={{
-        height: '100%',
-        width: '100%',
-        position: 'absolute',
-        top: '4px',
-        left: '4px',
-      }}
+    <Grid
+      item
       container
-      direction="row"
-      justify="center"
-      alignItems="center"
-      spacing={1}
+      style={{ height: '100%', width: '100%', position: 'absolute' }}
+      direction="column"
+      justify="space-between"
+      alignItems="stretch"
     >
-      <Grid // player box
+      <Grid // top bar
+        item
+        style={{
+          height: 90,
+          width: '100%',
+          background: 'linear-gradient(to bottom, black, transparent)',
+        }}
+      />
+      <Grid //controls bar
         item
         container
-        style={{ height: '100%' }}
         direction="column"
-        justify="space-between"
+        justify="flex-end"
         alignItems="stretch"
-        lg={10}
-        md={9}
-        sm={12}
-        xs={12}
+        style={{
+          height: 90,
+          width: '100%',
+          background: 'linear-gradient(to bottom, transparent, black)',
+        }}
       >
-        <Grid // top bar
-          item
-          style={{
-            height: 90,
-            width: '100%',
-            background: 'linear-gradient(to bottom, black, transparent)',
-          }}
-        />
-        <Grid //controls bar
+        <Grid item style={{ width: '100%', position: 'relative' }}>
+          <Seekbar
+            onSeekMouseDown={onSeekMouseDown}
+            onSeekChange={onSeekChange}
+            onSeekMouseUp={onSeekMouseUp}
+            played={played}
+            loaded={loaded}
+            duration={duration}
+          />
+        </Grid>
+        <Grid
           item
           container
-          direction="column"
-          justify="flex-end"
-          alignItems="stretch"
-          style={{
-            height: 90,
-            width: '100%',
-            background: 'linear-gradient(to bottom, transparent, black)',
-          }}
+          direction="row"
+          justify="flex-start"
+          alignItems="center"
+          style={{ width: '100%', height: 36, background: 'transparent', zIndex: 80 }}
         >
-          <Grid item style={{ width: '100%', position: 'relative' }}>
-            <Seekbar
-              onMouseDown={props.onMouseDown}
-              onChange={props.onChange}
-              onMouseUp={props.onMouseUp}
-              played={props.played}
-              loaded={props.loaded}
-              duration={props.duration}
-            />
-          </Grid>
-          <Grid
-            item
-            container
-            direction="row"
-            justify="flex-start"
-            alignItems="center"
-            style={{ width: '100%', height: 36, background: 'transparent', zIndex: 80 }}
-          >
-            <Buttons isPlaying={props.isPlaying} onPlayPause={props.onPlayPause} />
-          </Grid>
+          <Menu isMuted={isMuted} toggleMuted={toggleMuted} isPlaying={isPlaying} onPlayPause={onPlayPause} />
         </Grid>
       </Grid>
-      <Grid item style={{ height: '100%' }} lg={2} md={3} sm={12} xs={12} />
     </Grid>
   )
 }

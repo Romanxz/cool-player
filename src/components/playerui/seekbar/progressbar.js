@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   loaded: {
     position: 'absolute',
     zIndex: 89,
-    background: theme.palette.secondary.light,
+    background: theme.palette.secondary.dark,
     height: 2,
     top: -2,
     width: '100%',
@@ -34,27 +34,27 @@ const useStyles = makeStyles(theme => ({
 
 const normalize = (value, max) => (value * 100) / max
 
-const Progressbar = ({ played, loaded, duration, isFocused }) => {
+const Progressbar = ({ played, loaded, duration, isMouseOver }) => {
   const classes = useStyles()
   return (
     <>
       <div
         className={classes.played}
         style={{
-          height: isFocused ? 4 : 2,
-          top: isFocused ? -4 : -2,
+          height: isMouseOver ? 4 : 2,
+          top: isMouseOver ? -4 : -2,
           width: `${normalize(played, duration)}%`,
         }}
       />
       <div
         className={classes.loaded}
         style={{
-          height: isFocused ? 4 : 2,
-          top: isFocused ? -4 : -2,
+          height: isMouseOver ? 4 : 2,
+          top: isMouseOver ? -4 : -2,
           width: `${normalize(loaded, duration)}%`,
         }}
       />
-      <div className={classes.none} style={{ height: isFocused ? 4 : 2, top: isFocused ? -4 : -2 }} />
+      <div className={classes.none} style={{ height: isMouseOver ? 4 : 2, top: isMouseOver ? -4 : -2 }} />
     </>
   )
 }
