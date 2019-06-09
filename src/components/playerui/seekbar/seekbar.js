@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     top: -4,
     left: -2,
     zIndex: 100,
-    transition: 'all 0.1s ease',
+    transition: 'all 0.2s ease',
     '&::-webkit-slider-thumb': {
       ...thumbstyles,
     },
@@ -37,6 +37,8 @@ const useStyles = makeStyles({
 const Seekbar = ({ played, loaded, duration, ...props }) => {
   const classes = useStyles()
   const [isMouseOver, setMouseOver] = useState(false)
+  const focusRange = () => setMouseOver(true)
+  const blurRange = () => setMouseOver(false)
   return (
     <>
       <input
@@ -50,8 +52,8 @@ const Seekbar = ({ played, loaded, duration, ...props }) => {
         min={0}
         max={duration}
         value={played}
-        onMouseMove={() => setMouseOver({ isMouseOver: true })}
-        onMouseLeave={() => setMouseOver({ isMouseOver: false })}
+        onMouseOver={focusRange}
+        onMouseLeave={blurRange}
       />
       <Progressbar isMouseOver={isMouseOver} played={played} loaded={loaded} duration={duration} />
     </>

@@ -6,10 +6,13 @@ import Chat from './components/chat'
 import Controlpanel from './components/playerui/controlpanel'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import theme from './components/theme/theme'
+import screenfull from 'screenfull'
 
 class Coolplayer extends React.Component {
   state = {
+    isFullscreen: false,
     isPlaying: true,
+    isInterface: false,
     volume: 0.8,
     isMuted: false,
     isSeeking: false,
@@ -18,12 +21,26 @@ class Coolplayer extends React.Component {
     duration: 0,
   }
 
+  toggleInterface = () => {
+    this.setState({ isInterface: true })
+    setTimeout(() => this.setState({ isInterface: false }), 5000)
+  }
+
   onPlayPause = () => {
     this.setState({ isPlaying: !this.state.isPlaying })
   }
 
   toggleMuted = () => {
     this.setState({ isMuted: !this.state.isMuted })
+  }
+
+  setVolume = e => {
+    this.setState({ volume: parseFloat(e.target.value) })
+  }
+
+  setFullscreen = () => {
+    screenfull.toggle(document.getElementById('fullscreendiv'))
+    this.setState({ isFullscreen: !this.state.isFullscreen })
   }
 
   onSeekChange = e => {
@@ -59,7 +76,7 @@ class Coolplayer extends React.Component {
   }
 
   render() {
-    const { isPlaying, volume, isMuted, played, loaded, duration } = this.state
+    const { isPlaying, volume, isMuted, played, loaded, duration, isFullscreen, isInterface } = this.state
     return (
       <MuiThemeProvider theme={theme}>
         <Root>
@@ -72,7 +89,19 @@ class Coolplayer extends React.Component {
             spacing={1}
           >
             <Grid item style={{ height: '100%' }} lg={10} md={9} sm={12} xs={12}>
-              <div style={{ height: '100%', width: '100%', position: 'relative' }}>
+              <div
+                id="fullscreendiv"
+                style={{ height: '100%', width: '100%', position: 'relative' }}
+                onMouseMove={this.toggleInterface}
+              >
+                {/* <div
+                  style={{ height: '100%', width: '100%', zIndex: 50, position: 'absolute' }}
+                  onClick={this.onPlayPause}
+                /> */}
+                <div
+                  style={{ height: '100%', width: '100%', zIndex: 50, position: 'absolute' }}
+                  onDoubleClick={this.setFullscreen}
+                />
                 <ReactPlayer
                   style={{ position: 'absolute' }}
                   height="100%"
@@ -92,16 +121,21 @@ class Coolplayer extends React.Component {
                   onDuration={this.onDuration}
                 />
                 <Controlpanel
+                  isInterface={isInterface}
                   onPlayPause={this.onPlayPause}
                   onSeekMouseDown={this.onSeekMouseDown}
                   onSeekChange={this.onSeekChange}
                   onSeekMouseUp={this.onSeekMouseUp}
                   toggleMuted={this.toggleMuted}
+                  setVolume={this.setVolume}
+                  setFullscreen={this.setFullscreen}
+                  isFullscreen={isFullscreen}
                   isPlaying={isPlaying}
                   isMuted={isMuted}
                   played={played}
                   loaded={loaded}
                   duration={duration}
+                  volume={volume}
                 />
               </div>
             </Grid>

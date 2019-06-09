@@ -7,19 +7,30 @@ const Controlpanel = ({
   onSeekMouseDown,
   onSeekChange,
   onSeekMouseUp,
+  isInterface,
   onPlayPause,
   toggleMuted,
+  setVolume,
+  setFullscreen,
+  isFullscreen,
   isPlaying,
   isMuted,
   played,
   loaded,
   duration,
+  volume,
 }) => {
   return (
     <Grid
       item
       container
-      style={{ height: '100%', width: '100%', position: 'absolute' }}
+      style={{
+        height: '100%',
+        width: '100%',
+        position: 'absolute',
+        transition: 'all 0.3s ease',
+        opacity: isInterface ? 1 : 0,
+      }}
       direction="column"
       justify="space-between"
       alignItems="stretch"
@@ -58,11 +69,25 @@ const Controlpanel = ({
           item
           container
           direction="row"
-          justify="flex-start"
+          justify="space-between"
           alignItems="center"
-          style={{ width: '100%', height: 36, background: 'transparent', zIndex: 80 }}
+          style={{
+            width: '100%',
+            height: 36,
+            background: 'transparent',
+            zIndex: 80,
+          }}
         >
-          <Menu isMuted={isMuted} toggleMuted={toggleMuted} isPlaying={isPlaying} onPlayPause={onPlayPause} />
+          <Menu
+            setFullscreen={setFullscreen}
+            isFullscreen={isFullscreen}
+            isMuted={isMuted}
+            toggleMuted={toggleMuted}
+            isPlaying={isPlaying}
+            onPlayPause={onPlayPause}
+            setVolume={setVolume}
+            volume={volume}
+          />
         </Grid>
       </Grid>
     </Grid>
