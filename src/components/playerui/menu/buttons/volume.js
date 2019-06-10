@@ -8,8 +8,7 @@ const thumbstyles = {
   height: 12,
   width: 12,
   borderRadius: '50%',
-  background: 'red',
-  border: '1px solid black',
+  border: '1px solid',
 }
 
 const useStyles = makeStyles(theme => ({
@@ -22,10 +21,10 @@ const useStyles = makeStyles(theme => ({
   seeker: {
     // position: 'relative',
     marginLeft: 15,
-    background: 'grey',
+    background: theme.palette.secondary.dark,
     cursor: 'pointer',
     height: 2,
-    width: 50,
+    width: 60,
     appearance: 'none',
     userSelect: 'none',
     top: 0,
@@ -34,9 +33,19 @@ const useStyles = makeStyles(theme => ({
     transition: 'all 0.1s ease',
     '&::-webkit-slider-thumb': {
       ...thumbstyles,
+      background: theme.palette.primary.main,
+      borderColor: theme.palette.secondary.dark,
     },
-    '&::-moz-range-thumb': { ...thumbstyles },
-    '&::-ms-thumb': { ...thumbstyles },
+    '&::-moz-range-thumb': {
+      ...thumbstyles,
+      background: theme.palette.primary.main,
+      borderColor: theme.palette.secondary.dark,
+    },
+    '&::-ms-thumb': {
+      ...thumbstyles,
+      background: theme.palette.primary.main,
+      borderColor: theme.palette.secondary.dark,
+    },
     '&:focus': { outline: 'none' },
   },
 }))

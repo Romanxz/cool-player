@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Root from './components/root'
 import ReactPlayer from 'react-player'
-import Chat from './components/chat'
+import Chat from './components/chat/chat'
 import Controlpanel from './components/playerui/controlpanel'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import theme from './components/theme/theme'
@@ -11,10 +11,10 @@ import screenfull from 'screenfull'
 class Coolplayer extends React.Component {
   state = {
     isFullscreen: false,
-    isPlaying: true,
+    isPlaying: false,
     isInterface: false,
     volume: 0.8,
-    isMuted: false,
+    isMuted: true,
     isSeeking: false,
     played: 0,
     loaded: 0,
@@ -23,7 +23,7 @@ class Coolplayer extends React.Component {
 
   toggleInterface = () => {
     this.setState({ isInterface: true })
-    setTimeout(() => this.setState({ isInterface: false }), 5000)
+    // setTimeout(() => this.setState({ isInterface: false }), 8000)
   }
 
   onPlayPause = () => {
@@ -93,13 +93,11 @@ class Coolplayer extends React.Component {
                 id="fullscreendiv"
                 style={{ height: '100%', width: '100%', position: 'relative' }}
                 onMouseMove={this.toggleInterface}
+                onClick={this.toggleInterface}
               >
-                {/* <div
-                  style={{ height: '100%', width: '100%', zIndex: 50, position: 'absolute' }}
-                  onClick={this.onPlayPause}
-                /> */}
                 <div
                   style={{ height: '100%', width: '100%', zIndex: 50, position: 'absolute' }}
+                  onClick={this.onPlayPause}
                   onDoubleClick={this.setFullscreen}
                 />
                 <ReactPlayer

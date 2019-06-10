@@ -30,7 +30,7 @@ const Menu = ({
       </div>
       <div
         style={{
-          width: 300,
+          width: 50,
           position: 'relative',
           display: 'flex',
           flexDirection: 'row',
