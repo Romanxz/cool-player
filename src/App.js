@@ -44,7 +44,7 @@ class Coolplayer extends React.Component {
   }
 
   onSeekChange = e => {
-    this.setState({ played: parseFloat(e.target.value) })
+    this.setState({ played: Math.floor(e.target.value) })
   }
 
   onSeekMouseDown = e => {
@@ -63,7 +63,7 @@ class Coolplayer extends React.Component {
 
   onProgress = progress => {
     // We only want to update time slider if we are not currently seeking
-    if (!this.state.seeking) {
+    if (!this.state.isSeeking) {
       this.setState({
         played: Math.floor(progress.playedSeconds),
         loaded: Math.floor(progress.loadedSeconds),
@@ -92,7 +92,7 @@ class Coolplayer extends React.Component {
               <div
                 id="fullscreendiv"
                 style={{ height: '100%', width: '100%', position: 'relative' }}
-                onMouseMove={this.toggleInterface}
+                // onMouseMove={this.toggleInterface}
                 onClick={this.toggleInterface}
               >
                 <div

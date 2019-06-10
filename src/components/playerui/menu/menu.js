@@ -2,6 +2,7 @@ import React from 'react'
 import Playpause from './buttons/playpause'
 import Volume from './buttons/volume'
 import Fullscreen from './buttons/fullscreen'
+import Time from './time'
 
 const Menu = ({
   isPlaying,
@@ -12,6 +13,8 @@ const Menu = ({
   volume,
   setFullscreen,
   isFullscreen,
+  played,
+  duration,
 }) => {
   return (
     <>
@@ -27,6 +30,7 @@ const Menu = ({
       >
         <Playpause isPlaying={isPlaying} onPlayPause={onPlayPause} />
         <Volume isMuted={isMuted} toggleMuted={toggleMuted} setVolume={setVolume} volume={volume} />
+        <Time played={played} duration={duration} />
       </div>
       <div
         style={{

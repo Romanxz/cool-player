@@ -12,13 +12,14 @@ class Chat extends React.Component {
     ],
   }
 
-  addMessage = textvalue => () => {
+  addMessage = textvalue => {
     this.setState({
       messages: [...this.state.messages, { id: Math.random(), name: Math.random(), text: textvalue }],
     })
   }
 
   render() {
+    console.log(this.state)
     return (
       <Grid
         item

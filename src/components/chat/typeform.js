@@ -32,6 +32,14 @@ class Typeform extends React.Component {
     this.setState({ textvalue: e.target.value })
   }
 
+  addMessage = e => {
+    e.preventDefault()
+    this.props.addMessage(this.state.textvalue)
+    this.setState({
+      textvalue: '',
+    })
+  }
+
   render() {
     const { input, button } = this.props.classes
     return (
@@ -65,12 +73,7 @@ class Typeform extends React.Component {
           alignItems="center"
           style={{ width: '100%', height: '30%' }}
         >
-          <Button
-            className={button}
-            variant="contained"
-            color="secondary"
-            onClick={this.props.addMessage(this.state.textvalue)}
-          >
+          <Button className={button} variant="contained" color="secondary" onClick={this.addMessage}>
             Send
           </Button>
         </Grid>

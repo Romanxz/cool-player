@@ -87,6 +87,8 @@ const Controlpanel = ({
             onPlayPause={onPlayPause}
             setVolume={setVolume}
             volume={volume}
+            played={played}
+            duration={duration}
           />
         </Grid>
       </Grid>

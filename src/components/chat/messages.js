@@ -8,7 +8,10 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     border: '1px solid',
     boxSizing: 'border-box',
-    overflowWrap: 'break-word',
+    wordWrap: 'break-word',
+    whiteSpace: 'pre-wrap',
+    overflowY: 'scroll',
+    flexWrap: 'nowrap',
     borderColor: theme.palette.secondary.light,
     padding: theme.spacing(1),
   },
@@ -18,16 +21,21 @@ const Messages = ({ messages }) => {
   const classes = useStyles()
   return (
     <Paper className={classes.paper}>
-      <Grid container direction="column" justify="flex-start">
+      <Grid
+        container
+        direction="column"
+        justify="flex-start"
+        // style={{ height: '100%', width: '100%', overflowY: 'scroll' }}
+      >
         {messages.map(message => (
-          <div style={{ overflowWrap: 'break-word' }}>
+          <Grid item style={{ maxWidth: '100%' }}>
             <Typography key={message.key} variant="overline" color="primary">
               {message.name}:
             </Typography>
-            <Typography key={message.key} variant="caption" color="secondary">
+            <Typography key={message.key} variant="caption" color="secondary" display="inline">
               {message.text}
             </Typography>
-          </div>
+          </Grid>
         ))}
       </Grid>
     </Paper>
