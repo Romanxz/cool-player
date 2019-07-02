@@ -10,12 +10,12 @@ import screenfull from 'screenfull'
 
 class Coolplayer extends React.Component {
   state = {
+    isInterface: false,
     isFullscreen: false,
     isPlaying: false,
-    isInterface: false,
-    volume: 0.8,
     isMuted: true,
     isSeeking: false,
+    volume: 0.8,
     played: 0,
     loaded: 0,
     duration: 0,
@@ -24,6 +24,10 @@ class Coolplayer extends React.Component {
   toggleInterface = () => {
     this.setState({ isInterface: true })
     // setTimeout(() => this.setState({ isInterface: false }), 8000)
+    // const [timeout, saveTimeout] = useState(null);
+    // когда нужно запустить новый делай так:
+    // clearTimeout(timeout);
+    // saveTimeout(setTimeout(() => {}, 1000));
   }
 
   onPlayPause = () => {
@@ -62,7 +66,6 @@ class Coolplayer extends React.Component {
   }
 
   onProgress = progress => {
-    // We only want to update time slider if we are not currently seeking
     if (!this.state.isSeeking) {
       this.setState({
         played: Math.floor(progress.playedSeconds),

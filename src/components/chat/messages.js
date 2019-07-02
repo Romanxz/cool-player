@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     boxSizing: 'border-box',
     wordWrap: 'break-word',
     whiteSpace: 'pre-wrap',
-    overflowY: 'scroll',
+    overflowY: 'auto',
     flexWrap: 'nowrap',
     borderColor: theme.palette.secondary.light,
     padding: theme.spacing(1),
