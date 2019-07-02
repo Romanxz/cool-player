@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core/'
 import Messages from './messages'
 import Typeform from './typeform'
 
-class Chat extends React.Component {
+class Chat extends React.PureComponent {
   state = {
     messages: [
       { id: 1, name: 'prodesigner666', text: 'yo guys seems like you know nothing about design' },
@@ -25,8 +25,11 @@ class Chat extends React.Component {
         item
         container
         style={{
+          position: 'relative',
           height: '100%',
-          width: '100%',
+          width: 300,
+          zIndex: 50,
+          marginRight: 30,
         }}
         direction="column"
         justify="space-between"

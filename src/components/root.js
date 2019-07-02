@@ -5,13 +5,14 @@ const useStyles = makeStyles({
   root: {
     position: 'absolute',
     display: 'flex',
+    zIndex: -100,
     justifyContent: 'center',
     alignItems: 'center',
     top: 0,
     left: 0,
     height: '100%',
     width: '100%',
-    background: 'white',
+    background: '#403031',
   },
 })
 

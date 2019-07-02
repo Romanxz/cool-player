@@ -1,7 +1,8 @@
 import React from 'react'
 import { Grid } from '@material-ui/core/'
-import Seekbar from './seekbar/seekbar'
+import Progressbar from './progressbar/progressbar'
 import Menu from './menu/menu'
+import Chat from './chat/chat'
 
 const Controlpanel = ({
   onSeekMouseDown,
@@ -38,44 +39,58 @@ const Controlpanel = ({
       <Grid // top bar
         item
         style={{
-          height: 90,
+          height: 30,
           width: '100%',
-          background: 'linear-gradient(to bottom, black, transparent)',
+          // background: 'linear-gradient(to bottom, black, transparent)',
         }}
       />
+      <Grid
+        item
+        container
+        style={{ width: '100%', posiotion: 'relative', height: '70%' }}
+        direction="column"
+        justify="flex-start"
+        alignItems="flex-end"
+      >
+        <Chat />
+      </Grid>
       <Grid //controls bar
         item
         container
         direction="column"
-        justify="flex-end"
-        alignItems="stretch"
+        justify="space-between"
+        alignItems="center"
         style={{
-          height: 90,
+          height: 100,
           width: '100%',
-          background: 'linear-gradient(to bottom, transparent, black)',
+          // background: 'linear-gradient(to bottom, transparent, black)',
+          // background: 'blue',
         }}
       >
-        <Grid item style={{ width: '100%', position: 'relative' }}>
-          <Seekbar
+        <Grid
+          item
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          style={{ width: '95%', height: '25%', position: 'relative' }}
+        >
+          <Progressbar
             onSeekMouseDown={onSeekMouseDown}
             onSeekChange={onSeekChange}
             onSeekMouseUp={onSeekMouseUp}
-            played={played}
-            loaded={loaded}
-            duration={duration}
+            values={{ played, loaded, duration }}
           />
         </Grid>
         <Grid
           item
           container
           direction="row"
-          justify="space-between"
+          justify="center"
           alignItems="center"
           style={{
             width: '100%',
-            height: 36,
-            background: 'transparent',
-            zIndex: 80,
+            height: '75%',
           }}
         >
           <Menu

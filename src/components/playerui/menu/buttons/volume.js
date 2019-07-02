@@ -13,6 +13,7 @@ const thumbstyles = {
 
 const useStyles = makeStyles(theme => ({
   volume: {
+    zIndex: 100,
     height: 30,
     width: 30,
     marginLeft: 15,
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   seeker: {
     // position: 'relative',
+    zIndex: 100,
     marginLeft: 15,
     background: theme.palette.secondary.dark,
     cursor: 'pointer',
@@ -29,7 +31,6 @@ const useStyles = makeStyles(theme => ({
     userSelect: 'none',
     top: 0,
     left: 0,
-    zIndex: 100,
     transition: 'all 0.1s ease',
     '&::-webkit-slider-thumb': {
       ...thumbstyles,

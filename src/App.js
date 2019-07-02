@@ -2,17 +2,16 @@ import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Root from './components/root'
 import ReactPlayer from 'react-player'
-import Chat from './components/chat/chat'
-import Controlpanel from './components/playerui/controlpanel'
+import Controlpanel from './components/playerui/playerui'
 import { MuiThemeProvider } from '@material-ui/core/styles'
 import theme from './components/theme/theme'
 import screenfull from 'screenfull'
 
 class Coolplayer extends React.Component {
   state = {
-    isInterface: false,
+    isInterface: true,
     isFullscreen: false,
-    isPlaying: false,
+    isPlaying: true,
     isMuted: true,
     isSeeking: false,
     volume: 0.8,
@@ -84,14 +83,14 @@ class Coolplayer extends React.Component {
       <MuiThemeProvider theme={theme}>
         <Root>
           <Grid
-            style={{ height: '100%', width: '100%' }}
+            style={{ height: '100%', width: '100%', position: 'relative' }}
             container
             direction="row"
             justify="center"
             alignItems="center"
             spacing={1}
           >
-            <Grid item style={{ height: '100%' }} lg={10} md={9} sm={12} xs={12}>
+            <Grid item container style={{ position: 'absolute', height: '100%', width: '100%' }}>
               <div
                 id="fullscreendiv"
                 style={{ height: '100%', width: '100%', position: 'relative' }}
@@ -99,12 +98,12 @@ class Coolplayer extends React.Component {
                 onClick={this.toggleInterface}
               >
                 <div
-                  style={{ height: '100%', width: '100%', zIndex: 50, position: 'absolute' }}
+                  style={{ height: '100%', width: '100%', zIndex: 11, position: 'absolute' }}
                   onClick={this.onPlayPause}
                   onDoubleClick={this.setFullscreen}
                 />
                 <ReactPlayer
-                  style={{ position: 'absolute' }}
+                  style={{ zIndex: -1, position: 'absolute' }}
                   height="100%"
                   width="100%"
                   url="https://www.youtube.com/watch?v=dE3F6sybNJk"
@@ -139,9 +138,6 @@ class Coolplayer extends React.Component {
                   volume={volume}
                 />
               </div>
-            </Grid>
-            <Grid item style={{ height: '100%' }} lg={2} md={3} sm={12} xs={12}>
-              <Chat />
             </Grid>
           </Grid>
         </Root>

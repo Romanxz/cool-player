@@ -4,10 +4,11 @@ import { withStyles } from '@material-ui/core/styles'
 
 const CustomTextField = withStyles(theme => ({
   root: {
+    zIndex: 50,
     height: '100%',
     '& .MuiOutlinedInput-root': {
       height: '100%',
-      background: 'white',
+      background: 'transparent',
       '& fieldset': {
         borderColor: theme.palette.secondary.light,
       },
@@ -22,7 +23,7 @@ const CustomTextField = withStyles(theme => ({
 }))(TextField)
 
 const styles = theme => ({
-  button: { height: 36, width: '50%' },
+  button: { zIndex: 50, height: 36, width: '50%' },
 })
 
 class Typeform extends React.Component {
@@ -45,7 +46,7 @@ class Typeform extends React.Component {
     return (
       <Grid
         container
-        style={{ height: '100%' }}
+        style={{ height: '100%', zIndex: 50 }}
         direction="column"
         justify="space-between"
         alignItems="center"

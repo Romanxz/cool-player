@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
   fullscreen: {
+    zIndex: 100,
     height: 30,
     width: 30,
     marginRight: 15,

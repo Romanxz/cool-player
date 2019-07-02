@@ -4,10 +4,12 @@ import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
   playpause: {
+    zIndex: 100,
     height: 30,
     width: 30,
     marginLeft: 15,
     cursor: 'pointer',
+    boxShadow: '2px 2px 1px 2px green',
   },
 }))
 

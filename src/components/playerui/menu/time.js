@@ -1,6 +1,6 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
-import getTimeFromSeconds from '../timefromseconds'
+import getTimeFromSeconds from './timefromseconds'
 
 const Time = ({ played, duration }) => {
   return (

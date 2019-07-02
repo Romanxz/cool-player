@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'pre-wrap',
     overflowY: 'auto',
     flexWrap: 'nowrap',
+    zIndex: 200,
     borderColor: theme.palette.secondary.light,
     padding: theme.spacing(1),
   },

@@ -18,32 +18,10 @@ const Menu = ({
 }) => {
   return (
     <>
-      <div
-        style={{
-          width: 300,
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-        }}
-      >
-        <Playpause isPlaying={isPlaying} onPlayPause={onPlayPause} />
-        <Volume isMuted={isMuted} toggleMuted={toggleMuted} setVolume={setVolume} volume={volume} />
-        <Time played={played} duration={duration} />
-      </div>
-      <div
-        style={{
-          width: 50,
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-        }}
-      >
-        <Fullscreen setFullscreen={setFullscreen} isFullscreen={isFullscreen} />
-      </div>
+      <Playpause isPlaying={isPlaying} onPlayPause={onPlayPause} />
+      <Volume isMuted={isMuted} toggleMuted={toggleMuted} setVolume={setVolume} volume={volume} />
+      <Fullscreen setFullscreen={setFullscreen} isFullscreen={isFullscreen} />
+      <Time played={played} duration={duration} />
     </>
   )
 }
