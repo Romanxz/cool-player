@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Paper, Typography } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'pre-wrap',
     overflowY: 'auto',
     flexWrap: 'nowrap',
-    zIndex: 200,
+    zIndex: 1,
     borderColor: theme.palette.secondary.light,
     padding: theme.spacing(1),
   },
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 const Messages = ({ messages }) => {
   const classes = useStyles()
   return (
-    <Paper className={classes.paper}>
+    <div className={classes.paper}>
       <Grid
         container
         direction="column"
@@ -29,7 +29,7 @@ const Messages = ({ messages }) => {
         // style={{ height: '100%', width: '100%', overflowY: 'scroll' }}
       >
         {messages.map(message => (
-          <Grid item style={{ maxWidth: '100%' }}>
+          <Grid item style={{ maxWidth: '100%', zIndex: 100 }}>
             <Typography key={message.key} variant="overline" color="primary">
               {message.name}:
             </Typography>
@@ -39,7 +39,7 @@ const Messages = ({ messages }) => {
           </Grid>
         ))}
       </Grid>
-    </Paper>
+    </div>
   )
 }
 

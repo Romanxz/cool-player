@@ -12,9 +12,9 @@ class Coolplayer extends React.Component {
     isInterface: true,
     isFullscreen: false,
     isPlaying: true,
-    isMuted: true,
+    isMuted: false,
     isSeeking: false,
-    volume: 0.8,
+    volume: 0.4,
     played: 0,
     loaded: 0,
     duration: 0,
@@ -106,7 +106,7 @@ class Coolplayer extends React.Component {
                   style={{ zIndex: -1, position: 'absolute' }}
                   height="100%"
                   width="100%"
-                  url="https://www.youtube.com/watch?v=dE3F6sybNJk"
+                  url="https://www.youtube.com/watch?v=2uQzojftb5M"
                   ref={this.ref}
                   playing={isPlaying}
                   volume={volume}

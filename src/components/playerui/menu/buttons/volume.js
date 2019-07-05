@@ -1,5 +1,4 @@
 import React from 'react'
-import { VolumeUp, VolumeDown, VolumeOff } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 
 const thumbstyles = {
@@ -51,17 +50,17 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Volume = ({ isMuted, toggleMuted, setVolume, volume }) => {
+const Volbar = ({ isMuted, toggleMuted, setVolume, volume }) => {
   const classes = useStyles()
   return (
     <>
-      {isMuted || volume === 0 ? (
+      {/* {isMuted || volume === 0 ? (
         <VolumeOff onClick={toggleMuted} color="primary" className={classes.volume} />
       ) : volume >= 0.6 ? (
         <VolumeUp onClick={toggleMuted} color="primary" className={classes.volume} />
       ) : (
         <VolumeDown onClick={toggleMuted} color="primary" className={classes.volume} />
-      )}
+      )} */}
       <input
         className={classes.seeker}
         onChange={setVolume}
@@ -75,4 +74,4 @@ const Volume = ({ isMuted, toggleMuted, setVolume, volume }) => {
   )
 }
 
-export default Volume
+export default Volbar

@@ -30,6 +30,7 @@ class Chat extends React.PureComponent {
           width: 300,
           zIndex: 50,
           marginRight: 30,
+          filter: 'blur(3px)',
         }}
         direction="column"
         justify="space-between"

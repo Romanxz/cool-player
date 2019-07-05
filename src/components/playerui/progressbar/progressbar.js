@@ -7,8 +7,8 @@ const normalize = (value, max) => (value * 100) / max
 const thumbstyles = {
   appearance: 'none',
   cursor: 'pointer',
-  height: 14,
-  width: 14,
+  height: 12,
+  width: 12,
   borderRadius: '50%',
   border: 'none',
 }
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     appearance: 'none',
     userSelect: 'none',
     zIndex: 100,
-    transition: 'all 0.3s ease',
+    transition: 'all 0.6s ease',
     '&::-webkit-slider-thumb': {
       ...thumbstyles,
       boxShadow: `0 0 8px 2px ${theme.palette.primary.dark},
