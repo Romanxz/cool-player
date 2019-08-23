@@ -30,10 +30,10 @@ const Messages = ({ messages }) => {
       >
         {messages.map(message => (
           <Grid item style={{ maxWidth: '100%', zIndex: 100 }}>
-            <Typography key={message.key} variant="overline" color="primary">
+            <Typography key={message.id} variant="overline" color="primary">
               {message.name}:
             </Typography>
-            <Typography key={message.key} variant="caption" color="secondary" display="inline">
+            <Typography key={message.id + 666} variant="caption" color="secondary" display="inline">
               {message.text}
             </Typography>
           </Grid>

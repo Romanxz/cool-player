@@ -10,6 +10,8 @@ const Controlpanel = ({
   onSeekMouseUp,
   isInterface,
   onPlayPause,
+  onPlay,
+  onPause,
   toggleMuted,
   setVolume,
   setFullscreen,
@@ -39,7 +41,7 @@ const Controlpanel = ({
       <Grid // top bar
         item
         style={{
-          height: 30,
+          height: 20,
           width: '100%',
           // background: 'linear-gradient(to bottom, black, transparent)',
         }}
@@ -61,7 +63,7 @@ const Controlpanel = ({
         justify="space-between"
         alignItems="center"
         style={{
-          height: 100,
+          height: 70,
           width: '100%',
           // background: 'linear-gradient(to bottom, transparent, black)',
           // background: 'blue',
@@ -73,7 +75,7 @@ const Controlpanel = ({
           direction="column"
           justify="center"
           alignItems="center"
-          style={{ width: '95%', height: '25%', position: 'relative' }}
+          style={{ width: '95%', height: '20%', position: 'relative' }}
         >
           <Progressbar
             onSeekMouseDown={onSeekMouseDown}
@@ -90,7 +92,7 @@ const Controlpanel = ({
           alignItems="center"
           style={{
             width: '100%',
-            height: '75%',
+            height: '80%',
           }}
         >
           <Menu
@@ -100,6 +102,8 @@ const Controlpanel = ({
             toggleMuted={toggleMuted}
             isPlaying={isPlaying}
             onPlayPause={onPlayPause}
+            onPlay={onPlay}
+            onPause={onPause}
             setVolume={setVolume}
             volume={volume}
             played={played}

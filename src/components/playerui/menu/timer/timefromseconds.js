@@ -3,7 +3,7 @@ const getTimeFromSeconds = totalSeconds => {
   const rest = totalSeconds % 3600
   const minutes = Math.floor(rest / 60)
   const seconds = rest % 60
-  const timestring = `${hours}:${minutes}:${seconds}`
+  const timestring = { hours, minutes, seconds }
   return timestring
 }
 

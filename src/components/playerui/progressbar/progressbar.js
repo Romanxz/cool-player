@@ -5,12 +5,14 @@ import { Grid } from '@material-ui/core'
 const normalize = (value, max) => (value * 100) / max
 
 const thumbstyles = {
+  zIndex: 200,
   appearance: 'none',
   cursor: 'pointer',
   height: 12,
   width: 12,
   borderRadius: '50%',
   border: 'none',
+  transition: 'all 0.3s ease',
 }
 
 const useStyles = makeStyles(theme => ({
@@ -24,43 +26,37 @@ const useStyles = makeStyles(theme => ({
     appearance: 'none',
     userSelect: 'none',
     zIndex: 100,
-    transition: 'all 0.6s ease',
     '&::-webkit-slider-thumb': {
       ...thumbstyles,
-      boxShadow: `0 0 8px 2px ${theme.palette.primary.dark},
+      boxShadow: `0 0 8px 3px ${theme.palette.primary.dark},
       inset 0 0 6px 4px ${theme.palette.primary.light}`,
       background: theme.palette.primary.main,
       '&:hover': {
-        boxShadow: `0 0 10px 3px ${theme.palette.primary.dark},
+        boxShadow: `0 0 15px 5px ${theme.palette.primary.dark},
       inset 0 0 10px 5px ${theme.palette.primary.light}`,
       },
     },
     '&::-moz-range-thumb': {
       ...thumbstyles,
-      boxShadow: `0 0 8px 2px ${theme.palette.primary.dark},
+      boxShadow: `0 0 8px 3px ${theme.palette.primary.dark},
       inset 0 0 6px 4px ${theme.palette.primary.light}`,
       background: theme.palette.primary.main,
       '&:hover': {
-        boxShadow: `0 0 10px 3px ${theme.palette.primary.dark},
+        boxShadow: `0 0 15px 5px ${theme.palette.primary.dark},
       inset 0 0 10px 5px ${theme.palette.primary.light}`,
       },
     },
     '&::-ms-thumb': {
       ...thumbstyles,
-      boxShadow: `0 0 8px 2px ${theme.palette.primary.dark},
+      boxShadow: `0 0 8px 3px ${theme.palette.primary.dark},
       inset 0 0 6px 4px ${theme.palette.primary.light}`,
       background: theme.palette.primary.main,
       '&:hover': {
-        boxShadow: `0 0 10px 3px ${theme.palette.primary.dark},
+        boxShadow: `0 0 15px 5px ${theme.palette.primary.dark},
       inset 0 0 10px 5px ${theme.palette.primary.light}`,
       },
     },
     '&:focus': { outline: 'none' },
-  },
-  '@keyframes glow': {
-    '0%': { backgroundPosition: [0, 0] },
-    '50%': { backgroundPosition: [1000, 0] },
-    '100%': { backgroundPosition: [0, 0] },
   },
   played: {
     zIndex: 90,
@@ -68,25 +64,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 10,
     height: 2,
     width: values => `${normalize(values.played, values.duration)}%`,
-    transition: 'all 0.1s ease',
-    '&::before': {
-      opacity: 0.6,
-      animationName: '$glow',
-      animationDuration: 15000,
-      animationTimingFucnction: 'linear',
-      animationIterationCount: 'infinite',
-      animationPlayState: 'running',
-      zIndex: -10,
-      content: `""`,
-      position: 'absolute',
-      top: -1,
-      left: -1,
-      background:
-        'linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)',
-      filter: 'blur(5px)',
-      width: 'calc(100% + 2px)',
-      height: 'calc(100% + 2px)',
-    },
   },
   loaded: {
     borderRadius: 10,
@@ -94,7 +71,7 @@ const useStyles = makeStyles(theme => ({
     background: theme.palette.secondary.dark,
     height: 2,
     width: values => `${normalize(values.loaded, values.duration)}%`,
-    transition: 'all 0.1s ease',
+    opacity: 0.7,
   },
   none: {
     borderRadius: 10,
@@ -102,13 +79,12 @@ const useStyles = makeStyles(theme => ({
     background: theme.palette.secondary.light,
     height: 2,
     width: '100%',
-    transition: 'all 0.1s ease',
+    opacity: 0.7,
   },
 }))
 
 const Progressbar = ({ values, ...props }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [isMouseOver, setMouseOver] = useState(false)
+  const [isHovered, setHover] = useState(false)
   const classes = useStyles(values)
   return (
     <>
@@ -123,18 +99,27 @@ const Progressbar = ({ values, ...props }) => {
           min={0}
           max={values.duration}
           value={values.played}
-          onMouseOver={() => setMouseOver(true)}
-          onMouseLeave={() => setMouseOver(false)}
+          onMouseOver={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
         />
       </Grid>
       <Grid item container style={{ position: 'absolute' }}>
-        <div className={classes.played} />
+        <div
+          className={classes.played}
+          style={{ height: isHovered ? 4 : 2, opacity: isHovered ? 1 : 0.7 }}
+        />
       </Grid>
       <Grid item container style={{ position: 'absolute' }}>
-        <div className={classes.loaded} />
+        <div
+          className={classes.loaded}
+          style={{ height: isHovered ? 4 : 2, opacity: isHovered ? 1 : 0.7 }}
+        />
       </Grid>
       <Grid item container style={{ position: 'absolute' }}>
-        <div className={classes.none} />
+        <div
+          className={classes.none}
+          style={{ height: isHovered ? 4 : 2, opacity: isHovered ? 1 : 0.7 }}
+        />
       </Grid>
     </>
   )

@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Volbar = ({ isMuted, toggleMuted, setVolume, volume }) => {
+const Volumebar = ({ isMuted, toggleMuted, setVolume, volume }) => {
   const classes = useStyles()
   return (
     <>
@@ -74,4 +74,4 @@ const Volbar = ({ isMuted, toggleMuted, setVolume, volume }) => {
   )
 }
 
-export default Volbar
+export default Volumebar

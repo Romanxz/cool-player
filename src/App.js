@@ -12,7 +12,7 @@ class Coolplayer extends React.Component {
     isInterface: true,
     isFullscreen: false,
     isPlaying: true,
-    isMuted: false,
+    isMuted: true,
     isSeeking: false,
     volume: 0.4,
     played: 0,
@@ -31,6 +31,14 @@ class Coolplayer extends React.Component {
 
   onPlayPause = () => {
     this.setState({ isPlaying: !this.state.isPlaying })
+  }
+
+  onPlay = () => {
+    this.setState({ isPlaying: true })
+  }
+
+  onPause = () => {
+    this.setState({ isPlaying: false })
   }
 
   toggleMuted = () => {
@@ -78,7 +86,16 @@ class Coolplayer extends React.Component {
   }
 
   render() {
-    const { isPlaying, volume, isMuted, played, loaded, duration, isFullscreen, isInterface } = this.state
+    const {
+      isPlaying,
+      volume,
+      isMuted,
+      played,
+      loaded,
+      duration,
+      isFullscreen,
+      isInterface,
+    } = this.state
     return (
       <MuiThemeProvider theme={theme}>
         <Root>
@@ -88,9 +105,12 @@ class Coolplayer extends React.Component {
             direction="row"
             justify="center"
             alignItems="center"
-            spacing={1}
           >
-            <Grid item container style={{ position: 'absolute', height: '100%', width: '100%' }}>
+            <Grid
+              item
+              container
+              style={{ position: 'absolute', height: '100%', width: '100%' }}
+            >
               <div
                 id="fullscreendiv"
                 style={{ height: '100%', width: '100%', position: 'relative' }}
@@ -98,7 +118,12 @@ class Coolplayer extends React.Component {
                 onClick={this.toggleInterface}
               >
                 <div
-                  style={{ height: '100%', width: '100%', zIndex: 11, position: 'absolute' }}
+                  style={{
+                    height: '100%',
+                    width: '100%',
+                    zIndex: 11,
+                    position: 'absolute',
+                  }}
                   onClick={this.onPlayPause}
                   onDoubleClick={this.setFullscreen}
                 />
@@ -123,6 +148,8 @@ class Coolplayer extends React.Component {
                 <Controlpanel
                   isInterface={isInterface}
                   onPlayPause={this.onPlayPause}
+                  onPlay={this.onPlay}
+                  onPause={this.onPause}
                   onSeekMouseDown={this.onSeekMouseDown}
                   onSeekChange={this.onSeekChange}
                   onSeekMouseUp={this.onSeekMouseUp}

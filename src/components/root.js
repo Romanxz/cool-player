@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles({
   root: {
-    position: 'absolute',
+    position: 'fixed',
     display: 'flex',
     zIndex: -100,
     justifyContent: 'center',
